@@ -6,18 +6,33 @@
       href="https://cdn.quilljs.com/1.3.6/quill.snow.css"
       rel="stylesheet"
     />
+
+    <link href="highlight.js/monokai-sublime.min.css" rel="stylesheet">
+    <link rel="stylesheet" 
+    href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css">
+
   </head>
 
   <body>
-    <h1>간단한 동시 문서 편집기</h1>
+    <h1>페어 프로그래밍</h1>
     <div id="editor"></div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+    <script href="highlight.js"></script>
 
     <script src="https://cdn.socket.io/socket.io-3.0.3.min.js"></script>
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <script>
-      
+
+      hljs.configure({   // optionally configure hljs
+        languages: ['javascript', 'ruby', 'python' , 'cpp']
+      });
       
       const quill = new Quill("#editor", {
+        modules: {
+          syntax: true,              // Include syntax module
+          toolbar: [['code-block']]  // Include button in toolbar
+        },
         theme: "snow",
       });
      
